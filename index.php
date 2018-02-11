@@ -1,5 +1,4 @@
 <?php
-// phpinfo();die;
 require 'vendor/autoload.php';
 /**
  * CodeIgniter

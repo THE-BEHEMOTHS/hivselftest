@@ -1,0 +1,5 @@
+CREATE TABLE `kits` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `kit` VARCHAR(255) NULL,
+  `status` INT NULL,
+  PRIMARY KEY (`id`));

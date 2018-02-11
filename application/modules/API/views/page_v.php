@@ -1,0 +1,1 @@
+<img src="<?= @$this->config->item('assets_url'); ?>img/500x500/LVCT-500x500.png">

@@ -1,7 +1,7 @@
 <?php
 
-$config['from'] = 'marekawilly@gmail.com';
-$config['password'] = 'Mareka2017';
+$config['from'] = 'besurekenya@gmail.com';
+$config['password'] = 'besure-2017';
 $config['port'] = 465;
 $config['server'] = 'smtp.gmail.com';
 $config['security'] = 'ssl';

@@ -5,11 +5,13 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class Hash
 {
-	protected $ci;
+	protected $ci, $generator;
 
 	public function __construct()
 	{
         $this->ci =& get_instance();
+        $factory = new RandomLib\Factory;
+        $this->generator = $factory->getMediumStrengthGenerator();
 	}
 
 	public function createUUID()
@@ -19,6 +21,10 @@ class Hash
 
 	function hashPassword($password){
 		return password_hash($password, PASSWORD_BCRYPT, array("cost" => 10));
+	}
+
+	function generateToken(){
+		return $this->generator->generateString(64);
 	}
 }
 
