@@ -3,6 +3,7 @@ CREATE TABLE `pharmacies` (
   `pharmacy_name` varchar(200) DEFAULT NULL,
   `pharmacy_contact_person` varchar(200) DEFAULT NULL,
   `pharmacy_phone` varchar(20) DEFAULT NULL,
+  `county_id` int(11) DEFAULT NULL,
   `pharmacy_location` varchar(100) DEFAULT NULL,
   `pharmacy_latitude` varchar(20) DEFAULT NULL,
   `pharmacy_longitude` varchar(20) DEFAULT NULL,

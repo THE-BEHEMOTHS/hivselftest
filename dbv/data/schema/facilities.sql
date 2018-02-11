@@ -7,6 +7,8 @@ CREATE TABLE `facilities` (
   `longitude` varchar(150) NOT NULL,
   `latitude` varchar(150) NOT NULL,
   `county_name` varchar(150) NOT NULL,
+  `description` text,
+  `nearest_town` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uuid` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
