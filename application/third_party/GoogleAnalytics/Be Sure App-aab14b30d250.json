@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "be-sure-app",
+  "private_key_id": "aab14b30d2501aacd2dd4743f53a97e545ed300a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEwAIBADANBgkqhkiG9w0BAQEFAASCBKowggSmAgEAAoIBAQDbpDSAlbi0YfGX\nkeqD1NLeX8zNm+trrWn8cJJ6O0SIWYM+GuFo0izjsEb8F8mmDsC/UUsbUlJPT5T0\n7amfBj5df1KnBCnewCqI+wvv0JvHKBJB2oJ7zSkxqSfnjBr2QVVDQpRtQTJ3pBqC\nRqsYBzDJxyh1mAGK8KpllkLD3c0sRnFfiM+nHB0+ejqTg+NQe6UYkBzsNSVZPMbn\nnMN7h/XRFY/mMv5K2fcb5g1rFGuzx/MURUFUlrNntJF1yiI+XdE7vKTfJtyHUOn6\noVl3qRNMSf0YSV9XmAYE//ysH34mIHR/Qy9U6Y+oT7vgl5/Qzslhoyia4ZS5Wg7B\n5zZK6/B/AgMBAAECggEBAKECLGKeXroMmneLxahCWRoejBmlVNyoUOt28kmcLM7v\nH2BlgBvBBpsaW87s+Ss74VveEfrDTAdLxVwO5Krofss3TLWWPcNGh2fG8Kcp+yfx\nXgDcV469hJcc812vvQwMNJ6LrhaxFnfR2oTpnP6ONtuTnTsm5OqfJao2jlbav07W\nMKp3U3c+o/rjrpMNOVKUZkNuZQ914PEvIib5OrridlNjBr+gJPjnDh5CrxeLwK0o\nHONHWyACMpgx3Tis0Vazp82lPIOrdr0qlKMNk48s/HDngsOnEpmW6/ozwWGoWrp1\nN702fozFkuKM0Q/KWdaDM1UUhy4EhJqr3zeipAqdqjECgYEA+U+dz/9pP85Z8DXb\nSFHZ3ocR9P5je+ZkP2kC2c3jDGVSjrki9vUvK6z0o93dZAtX6F6IVIVqOD4w3tUb\nMRJmNCLiCbUu/sKMeDOkgH+BqTglseHR1Ms0GSNzyck23f2f24dmm91rdseaLSAs\nqpeRqYmaqFoKZzBWXiTZAjT9f7sCgYEA4YjN4hasSyWs/declPwmdzmu9scxGKRD\ndTovM9Ig6gd6x3EVawdK/YmEpZ179d2y59/SkWTcFu2C2+PYgXFXW0U5vkvejYwm\nBiwM1I2eyg8s+zZqH0zPqaYHH23fBXOwrrI8aHqdUHn5Wd3d/sdT23m84Ackr3aT\nHfMlcCz8HA0CgYEAs0INxIpvENO8Uz1GKB/COYCA5tkqiuHDXtyQki65fCY2UCzJ\n+Sud+Rdo55IVJ2QIlymxeKRdFYeR+AbegFAscHxMbpJ58e/MtHjdZQ9JGXUnlVk7\nWHerRA/7pzEoZEGCeYRHwPZZ2JP4RU4HD7nfoDkynK3xIPTehN6VskKLqxUCgYEA\npCwLgppyjLk+NgGvj5wE/CDXRfg1uvRHzpuuJJC/ONx8+ZVNu/0xD2H9VvlOdOkP\nBE8fXosG0wHNkfdHcOJqbpvzrpxXwr3UKAYEyOzWO8vUOIGhumsVdy7OXIiEIdnX\nMTO5WWx3+07uvgYNRRsf5dG2NXW9tKQh71lBVWjJlDkCgYEA4R+h89BVUxqOX+Dz\nM8u0BzUUNIkPDUF7v0j9IZD4Fa7H711M8QGndwfUqRgRbJ3MHX6csGvODoW04vqF\nu+XL+X+SVqXyfNf1HUwRilZvxawfmTbVq4IgSemtoSWdduyRenabH3rYBvs7zRWp\n6qmdynhQSHwKd+4j7x5ASkzeuDk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "be-sure-service-key@be-sure-app.iam.gserviceaccount.com",
+  "client_id": "109476391290477028014",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/be-sure-service-key%40be-sure-app.iam.gserviceaccount.com"
+}

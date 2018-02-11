@@ -21,9 +21,12 @@ class Template extends MX_Controller {
 		$data['page_css'] = $this->assets->css;
 		$data['page_js'] = $this->assets->js;
 
-		$this->load->model('Auth/auth_m');
-		$user_details = $this->auth_m->findUserByIdentifier('uuid', $this->session->userdata('uuid'));
+		// $this->load->model('Auth/auth_m');
+		$user_details = $this->db->get_where('user', ['uuid'	=>	$this->session->userdata('user_id'), 'user_is_active'	=>	1])->row();
 		if($user_details){
+			if(!$this->session->userdata('type')){
+				$this->session->set_userdata('type', $user_details->user_type);
+			}
 			$data['javascript_file'] = $this->assets->javascript_file;
 			$data['javascript_data'] = $this->assets->javascript_data;
 			$data['user_details'] = $user_details;
@@ -37,12 +40,27 @@ class Template extends MX_Controller {
 			$data['partialData'] = $this->contentViewData;
 		}else{
 			$this->load->module('Auth');
-			$this->auth->logout();
+			$this->auth->signout();
 		}
 
 		$this->load->view('Template/backend_template_v', $data);
 	}
 
+	function auth(){
+		$data['page_css'] = $this->assets->css;
+		$data['page_js'] = $this->assets->js;
+
+
+		$data['javascript_file'] = $this->assets->javascript_file;
+		$data['javascript_data'] = $this->assets->javascript_data;
+		
+		$data['pagetitle'] = $this->pageTitle;
+		$data['pagedescription'] = $this->pageDescription;
+		$data['partial'] = $this->contentView;
+		$data['partialData'] = $this->contentViewData;
+
+		$this->load->view('Template/besure_auth_template_v', $data);
+	}
 
 
 	function authTemplate(){
@@ -73,9 +91,12 @@ class Template extends MX_Controller {
 		$data['partial'] = $this->contentView;
 		$data['partialData'] = $this->contentViewData;
 
+		$data['kits'] = $this->getKits();
+		$data['gender'] = $this->getGender();
+
 		$data['javascript_file'] = $this->assets->javascript_file;
 		$data['javascript_data'] = $this->assets->javascript_data;
-		$this->load->view('Template/frontend_template_v', $data);
+		$this->load->view('Template/frontend_template_v_2', $data);
 	}
 
 	function createSideBar($selected = null){
@@ -83,6 +104,44 @@ class Template extends MX_Controller {
 		$class = $this->router->class;
 		$menus = [];
 		$menu_list = "";
+
+		$menus = [
+			'dashboard'	=> [
+				'text'	=>	'Dashboard',
+				'link'	=>	'Dashboard',
+				'users'	=>	['superadmin', 'admin']
+			],
+			'surveys'	=>	[
+				'text'	=>	'Surveys',
+				'link'	=>	'Dashboard/Surveys',
+				'users'	=>	['superadmin', 'admin']
+			],
+			'pharmacies'	=> [
+				'text'	=>	'Pharmacies',
+				'link'	=>	'Dashboard/Sites/pharmacies',
+				'users'	=>	['superadmin', 'admin']
+			],
+			'referral_sites'	=> [
+				'text'	=>	'Referral Sites',
+				'link'	=>	'Dashboard/Sites/referrals',
+				'users'	=>	['superadmin', 'admin']
+			],
+			'profile'	=>	[
+				'text'	=>	'My Profile',
+				'link'	=>	'Dashboard/User/profile',
+				'users'	=>	['superadmin', 'admin']
+			],
+			'users'		=>	[
+				'text'	=>	'Users',
+				'link'	=>	'Dashboard/User',
+				'users'	=>	['superadmin']
+			],
+			'logout'	=>	[
+				'text'	=>	'Logout',
+				'link'	=>	'Auth/signout',
+				'users'	=>	['superadmin', 'admin']
+			]
+		];
 
 		if (count($menus) > 0) {
 			foreach ($menus as $key => $item) {
@@ -101,7 +160,7 @@ class Template extends MX_Controller {
 						foreach($item['sublist'] as $sub_item){
 							$menu_list .= "
 								<li class = 'nav-item'>
-									<a class = 'nav-link' href = '".base_url($sub_item['link'])."'><i class = '{$sub_item['icon']}'></i> {$sub_item['text']}</a>
+									<a class = 'nav-link' href = '".base_url($sub_item['link'])."'>{$sub_item['text']}</a>
 								</li>
 							";
 						}
@@ -109,7 +168,7 @@ class Template extends MX_Controller {
 					}
 					else{
 					$menu_list .= "<li class = 'nav-item'>
-						<a class = 'nav-link' href = '".base_url($item['link'])."'><i class = '{$item['icon']}'></i> {$item['text']}</a>
+						<a class = 'nav-link' href = '".base_url($item['link'])."'>{$item['text']}</a>
 					</li>";
 					}
 				}
@@ -154,6 +213,49 @@ class Template extends MX_Controller {
 		$this->metaData .= $metadata_string;
 
 		return $this;
+	}
+
+	function getKits(){
+		$counter = 0;
+
+        $this->db->where('status', 1);
+        $kits = $this->db->get('kits')->result();
+
+        $kit_view = '';
+
+        foreach ($kits as $key => $kit) {
+            //echo '<pre>';print_r($kit);echo '</pre>';die();
+            $counter ++;           
+            $kit_view .= '<div class="checkbox">
+				  <label> 
+				    <input type="checkbox" name="kit[]" value="'.$kit->id.'">
+				    &nbsp;&nbsp;
+				    '.$kit->kit.'
+				    &nbsp;&nbsp;&nbsp;&nbsp;
+				  </label>
+			  	</div>';
+        }
+
+
+        return $kit_view;
+	}
+
+	function getGender(){
+		$counter = 0;
+
+		$this->db->where('status',1);
+        $genders = $this->db->get('gender')->result();
+
+        $gender_view = '';
+
+        foreach ($genders as $key => $gender) {
+            //echo '<pre>';print_r($gender);echo '</pre>';die();
+            $counter ++;           
+            $gender_view .= '<option value="'.$gender->id.'">'.$gender->gender.'</option>';
+        }
+
+
+        return $gender_view;
 	}
 }
 
